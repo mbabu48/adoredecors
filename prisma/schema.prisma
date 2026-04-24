@@ -1,0 +1,69 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Inquiry {
+  id            String   @id @default(cuid())
+  name          String
+  email         String
+  phone         String
+  eventType     String
+  eventDate     DateTime?
+  guestCount    Int?
+  venueSize     String?
+  message       String
+  estimatedCost Int?
+  status        String   @default("new") // new | followup | booked | closed
+  source        String   @default("contact") // contact | pricing | footer
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Order {
+  id            String   @id @default(cuid())
+  inquiryId     String?
+  customerName  String
+  customerEmail String
+  customerPhone String
+  eventType     String
+  eventDate     DateTime
+  venueAddress  String?
+  guestCount    Int
+  totalAmount   Int
+  advancePaid   Int      @default(0)
+  status        String   @default("confirmed") // confirmed | in_progress | delivered | cancelled
+  notes         String?
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model GalleryItem {
+  id          String   @id @default(cuid())
+  imageUrl    String
+  publicId    String?  // Cloudinary public_id, for deletion
+  title       String
+  description String?
+  eventType   String   // wedding | birthday | baby_shower | corporate | anniversary | retirement | other
+  featured    Boolean  @default(false)
+  displayOrder Int     @default(0)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Feedback {
+  id         String   @id @default(cuid())
+  name       String
+  eventType  String?
+  rating     Int      // 1-5
+  message    String
+  approved   Boolean  @default(false)
+  featured   Boolean  @default(false)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
