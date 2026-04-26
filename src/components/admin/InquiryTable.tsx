@@ -1,6 +1,6 @@
 "use client";
 import { useMemo, useState } from "react";
-import { formatINR, eventTypeLabel } from "@/lib/pricing";
+import { formatUSD, eventTypeLabel } from "@/lib/pricing";
 
 type Row = {
   id: string;
@@ -173,7 +173,7 @@ export default function InquiryTable({ initial }: { initial: Row[] }) {
                   className="border-t border-sand hover:bg-ivory cursor-pointer"
                 >
                   <td className="px-3 py-2 text-stone whitespace-nowrap">
-                    {new Date(r.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
+                    {new Date(r.createdAt).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
                   </td>
                   <td className="px-3 py-2 text-burgundy">{r.name}</td>
                   <td className="px-3 py-2 text-stone text-[12px]">
@@ -185,7 +185,7 @@ export default function InquiryTable({ initial }: { initial: Row[] }) {
                     {r.guestCount && <span className="text-stone text-[11px]"> · {r.guestCount} pax</span>}
                   </td>
                   <td className="px-3 py-2 text-burgundy">
-                    {r.estimatedCost ? formatINR(r.estimatedCost) : "—"}
+                    {r.estimatedCost ? formatUSD(r.estimatedCost) : "—"}
                   </td>
                   <td className="px-3 py-2">
                     <select
@@ -230,7 +230,7 @@ export default function InquiryTable({ initial }: { initial: Row[] }) {
                 <h3 className="font-serif text-xl text-burgundy">{selected.name}</h3>
                 <div className="text-[12px] text-stone">
                   {eventTypeLabel(selected.eventType)}
-                  {selected.eventDate && " · " + new Date(selected.eventDate).toLocaleDateString("en-IN")}
+                  {selected.eventDate && " · " + new Date(selected.eventDate).toLocaleDateString("en-US")}
                 </div>
               </div>
               <button onClick={() => setSelected(null)} className="text-stone text-[18px]">×</button>
@@ -240,7 +240,7 @@ export default function InquiryTable({ initial }: { initial: Row[] }) {
               <div><span className="text-stone">Email:</span> <a href={`mailto:${selected.email}`} className="text-burgundy">{selected.email}</a></div>
               {selected.guestCount && <div><span className="text-stone">Guests:</span> {selected.guestCount}</div>}
               {selected.venueSize && <div><span className="text-stone">Venue:</span> {selected.venueSize}</div>}
-              {selected.estimatedCost && <div><span className="text-stone">Estimate:</span> {formatINR(selected.estimatedCost)}</div>}
+              {selected.estimatedCost && <div><span className="text-stone">Estimate:</span> {formatUSD(selected.estimatedCost)}</div>}
               <div><span className="text-stone">Source:</span> {selected.source}</div>
             </div>
             <div className="mb-4">
@@ -324,7 +324,7 @@ export default function InquiryTable({ initial }: { initial: Row[] }) {
                 />
               </div>
               <div>
-                <label className="block text-[11px] text-stone uppercase tracking-[0.12em] mb-1">Total (₹) *</label>
+                <label className="block text-[11px] text-stone uppercase tracking-[0.12em] mb-1">Total ($) *</label>
                 <input
                   required
                   type="number"
@@ -337,7 +337,7 @@ export default function InquiryTable({ initial }: { initial: Row[] }) {
             </div>
 
             <div>
-              <label className="block text-[11px] text-stone uppercase tracking-[0.12em] mb-1">Advance paid (₹)</label>
+              <label className="block text-[11px] text-stone uppercase tracking-[0.12em] mb-1">Advance paid ($)</label>
               <input
                 type="number"
                 min="0"

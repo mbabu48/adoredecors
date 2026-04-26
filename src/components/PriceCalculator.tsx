@@ -9,7 +9,7 @@ import {
   VENUE_SIZES,
   VenueSize,
   estimatePrice,
-  formatINR,
+  formatUSD,
 } from "@/lib/pricing";
 
 export default function PriceCalculator() {
@@ -154,7 +154,7 @@ export default function PriceCalculator() {
                     </span>
                     {a.hint && <span className="text-[11px] text-stone pl-6">{a.hint}</span>}
                   </span>
-                  <span className="text-stone text-[11px]">{formatINR(a.price)}</span>
+                  <span className="text-stone text-[11px]">{formatUSD(a.price)}</span>
                 </button>
               );
             })}
@@ -165,24 +165,24 @@ export default function PriceCalculator() {
       {/* Quote panel */}
       <aside className="bg-cream border border-sand rounded-md p-6 h-fit sticky top-20">
         <div className="text-[10px] text-rose tracking-[0.22em]">LIVE ESTIMATE</div>
-        <div className="font-serif text-4xl text-burgundy mt-2 mb-5">{formatINR(quote.total)}</div>
+        <div className="font-serif text-4xl text-burgundy mt-2 mb-5">{formatUSD(quote.total)}</div>
 
         <div className="space-y-2 text-[13px]">
           <div className="flex justify-between pb-2 border-b border-dashed border-sand">
             <span className="text-stone">Base ({EVENT_TYPES.find((e) => e.key === eventType)?.label})</span>
-            <span className="text-burgundy">{formatINR(quote.base)}</span>
+            <span className="text-burgundy">{formatUSD(quote.base)}</span>
           </div>
           <div className="flex justify-between pb-2 border-b border-dashed border-sand">
             <span className="text-stone">Venue adjustment ×{quote.venueMultiplier}</span>
-            <span className="text-burgundy">{formatINR(quote.venueAdjusted - quote.base)}</span>
+            <span className="text-burgundy">{formatUSD(quote.venueAdjusted - quote.base)}</span>
           </div>
           <div className="flex justify-between pb-2 border-b border-dashed border-sand">
             <span className="text-stone">Guest scaling (&gt;50)</span>
-            <span className="text-burgundy">{formatINR(quote.guestExtra)}</span>
+            <span className="text-burgundy">{formatUSD(quote.guestExtra)}</span>
           </div>
           <div className="flex justify-between pb-2 border-b border-dashed border-sand">
             <span className="text-stone">Add-ons ({quote.addOnDetail.length})</span>
-            <span className="text-burgundy">{formatINR(quote.addOnTotal)}</span>
+            <span className="text-burgundy">{formatUSD(quote.addOnTotal)}</span>
           </div>
         </div>
 

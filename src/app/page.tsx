@@ -7,7 +7,7 @@ import { eventTypeLabel } from "@/lib/pricing";
 export const revalidate = 60; // refresh home every minute
 
 const services = [
-  { icon: Heart, title: "Weddings", desc: "Mandaps, reception stages, haldi, mehendi, sangeet." },
+  { icon: Heart, title: "Weddings", desc: "Ceremony arches, reception stages, cocktail hours, and more." },
   { icon: Gift, title: "Birthdays", desc: "Sweet 16, 60th, kids' themes, milestone celebrations." },
   { icon: Sparkles, title: "Baby Showers", desc: "Pastel backdrops, floral arches, dreamy setups." },
   { icon: Users, title: "Corporate", desc: "Launches, galas, conferences, award nights." },

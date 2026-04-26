@@ -4,7 +4,7 @@ import {
   EVENT_TYPES,
   VENUE_SIZES,
   ADD_ONS,
-  formatINR,
+  formatUSD,
   eventTypeLabel,
 } from "@/lib/pricing";
 import type { EventType, VenueSize, AddOnKey } from "@/lib/pricing";
@@ -29,14 +29,14 @@ describe("estimatePrice — guest count scaling", () => {
     expect(r.guestExtra).toBe(0);
   });
 
-  it("charges ₹150 per guest beyond 50", () => {
+  it("charges $5 per guest beyond 50", () => {
     const r = estimatePrice({ eventType: "wedding", venueSize: "small", guestCount: 100, addOns: [] });
-    expect(r.guestExtra).toBe(50 * 150);
+    expect(r.guestExtra).toBe(50 * 5);
   });
 
   it("max guests (10000) charges correctly", () => {
     const r = estimatePrice({ eventType: "wedding", venueSize: "small", guestCount: 10000, addOns: [] });
-    expect(r.guestExtra).toBe((10000 - 50) * 150);
+    expect(r.guestExtra).toBe((10000 - 50) * 5);
   });
 });
 
@@ -44,7 +44,7 @@ describe("estimatePrice — venue size multiplier", () => {
   for (const { key, multiplier } of VENUE_SIZES) {
     it(`${key} multiplier is ${multiplier}`, () => {
       const r = estimatePrice({ eventType: "birthday", venueSize: key as VenueSize, guestCount: 0, addOns: [] });
-      const expected = Math.round(30000 * multiplier);
+      const expected = Math.round(800 * multiplier);
       expect(r.venueAdjusted).toBe(expected);
       expect(r.venueMultiplier).toBe(multiplier);
     });
@@ -98,13 +98,13 @@ describe("estimatePrice — unknown event type falls back", () => {
   });
 });
 
-describe("formatINR", () => {
+describe("formatUSD", () => {
   it("formats 0 correctly", () => {
-    expect(formatINR(0)).toBe("₹0");
+    expect(formatUSD(0)).toBe("$0");
   });
 
   it("formats a large number", () => {
-    expect(formatINR(80000)).toContain("₹");
+    expect(formatUSD(3000)).toContain("$");
   });
 });
 
