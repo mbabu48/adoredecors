@@ -72,7 +72,7 @@ export default function FeedbackModerator({ initial }: { initial: Row[] }) {
                   <div className="text-[14px] text-burgundy font-medium">{r.name}</div>
                   <div className="text-[11px] text-rose tracking-[0.1em] uppercase">
                     {r.eventType ? eventTypeLabel(r.eventType) : "—"} ·{" "}
-                    {new Date(r.createdAt).toLocaleDateString("en-IN")}
+                    {new Date(r.createdAt).toLocaleDateString("en-US")}
                   </div>
                 </div>
                 <div className="flex gap-0.5">

@@ -1,6 +1,6 @@
-# Jesuraj Event Decors — Website
+# Adore Decors — Website
 
-A full-stack website for Jesuraj Event Decors (Chennai). Built with Next.js 14, Prisma, NextAuth, Tailwind, and Cloudinary.
+A full-stack website for Adore Decors (Los Angeles, CA). Built with Next.js 14, Prisma, NextAuth, Tailwind, and Cloudinary.
 
 ## What's inside
 
@@ -30,8 +30,8 @@ A full-stack website for Jesuraj Event Decors (Chennai). Built with Next.js 14, 
 
 ```bash
 # clone the repo
-git clone <your-github-url> jesuraj-decors
-cd jesuraj-decors
+git clone <your-github-url> adore-decors
+cd adore-decors
 
 # install dependencies
 npm install
@@ -68,9 +68,9 @@ Restart the dev server, go to `/admin-signin`, click the dev-password form, sign
 1. Sign up free at [cloudinary.com](https://cloudinary.com/users/register_free).
 2. On the Dashboard, copy your **Cloud Name**, **API Key**, and **API Secret**.
 3. In Cloudinary, go to **Settings → Upload → Upload presets**. Click **Add upload preset**:
-   - Preset name: `jesuraj_gallery`
+   - Preset name: `adore_gallery`
    - Signing mode: **Unsigned**
-   - Folder (optional): `jesuraj`
+   - Folder (optional): `adore`
    - Save.
 4. Add all four values to your `.env`:
    ```
@@ -78,13 +78,13 @@ Restart the dev server, go to `/admin-signin`, click the dev-password form, sign
    CLOUDINARY_API_KEY="..."
    CLOUDINARY_API_SECRET="..."
    NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME="your-cloud-name"
-   NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="jesuraj_gallery"
+   NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET="adore_gallery"
    ```
 
 ### Google OAuth (for production admin sign-in)
 
 1. Go to [console.cloud.google.com](https://console.cloud.google.com/).
-2. Create a new project (name it "Jesuraj Decors").
+2. Create a new project (name it "Adore Decors").
 3. **APIs & Services → OAuth consent screen**: choose "External", fill in app name, support email, developer email. Save.
 4. **APIs & Services → Credentials → Create credentials → OAuth client ID**:
    - Application type: Web application
@@ -112,7 +112,7 @@ git init
 git add .
 git commit -m "Initial commit"
 # create a repo on github.com, then:
-git remote add origin https://github.com/<you>/jesuraj-decors.git
+git remote add origin https://github.com/<you>/adore-decors.git
 git push -u origin main
 ```
 
@@ -129,7 +129,7 @@ SQLite doesn't work on Vercel (no persistent disk). Use **Neon** (free):
 ### Step 3: deploy on Vercel
 
 1. Sign in at [vercel.com](https://vercel.com) with your GitHub account.
-2. Click **Add New → Project**, import your `jesuraj-decors` repo.
+2. Click **Add New → Project**, import your `adore-decors` repo.
 3. Vercel auto-detects Next.js. Leave build settings as-is.
 4. **Environment Variables** — paste these:
 
@@ -145,11 +145,11 @@ SQLite doesn't work on Vercel (no persistent disk). Use **Neon** (free):
    | `CLOUDINARY_API_KEY` | From Cloudinary |
    | `CLOUDINARY_API_SECRET` | From Cloudinary |
    | `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` | Same as above (public) |
-   | `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` | `jesuraj_gallery` |
-   | `NEXT_PUBLIC_BUSINESS_PHONE` | e.g. `+91 98765 00000` |
-   | `NEXT_PUBLIC_BUSINESS_EMAIL` | `hello@jesurajdecors.com` |
-   | `NEXT_PUBLIC_BUSINESS_ADDRESS` | Chennai, Tamil Nadu, India |
-   | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number with country code, digits only (e.g. `919876500000`) |
+   | `NEXT_PUBLIC_CLOUDINARY_UPLOAD_PRESET` | `adore_gallery` |
+   | `NEXT_PUBLIC_BUSINESS_PHONE` | e.g. `+1 (555) 000-0000` |
+   | `NEXT_PUBLIC_BUSINESS_EMAIL` | `hello@adoredecors.com` |
+   | `NEXT_PUBLIC_BUSINESS_ADDRESS` | Los Angeles, CA |
+   | `NEXT_PUBLIC_WHATSAPP_NUMBER` | WhatsApp number with country code, digits only (e.g. `15550000000`) |
    | `NEXT_PUBLIC_INSTAGRAM_URL` | Your Instagram page |
    | `NEXT_PUBLIC_FACEBOOK_URL` | Your Facebook page |
 
@@ -161,7 +161,7 @@ SQLite doesn't work on Vercel (no persistent disk). Use **Neon** (free):
    ```
 7. Add the live redirect URI to Google OAuth (step 2.4 above): `https://your-project.vercel.app/api/auth/callback/google`.
 
-### Step 4: custom domain (optional, ~₹900/year)
+### Step 4: custom domain (optional, ~$15/year)
 
 Buy a domain from GoDaddy / Namecheap / Google Domains. In Vercel project settings → **Domains → Add**, enter your domain. Vercel shows the DNS records to set at your registrar. Usually takes 5-30 minutes to propagate.
 
@@ -221,4 +221,4 @@ prisma/
 - [zod](https://zod.dev/) (input validation)
 
 ## License
-Proprietary — Jesuraj Event Decors.
+Proprietary — Adore Decors.

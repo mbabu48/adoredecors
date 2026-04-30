@@ -44,9 +44,9 @@ beforeEach(() => {
 
 describe("POST /api/inquiries", () => {
   const validBody = {
-    name: "Priya Sharma",
-    email: "priya@example.com",
-    phone: "+91 99999 00000",
+    name: "Emily Johnson",
+    email: "emily.j@example.com",
+    phone: "+1 (555) 000-0000",
     eventType: "wedding",
     message: "I need decoration for my wedding.",
     source: "contact",

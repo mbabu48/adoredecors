@@ -1,6 +1,6 @@
 "use client";
 import { useState } from "react";
-import { formatINR, eventTypeLabel } from "@/lib/pricing";
+import { formatUSD, eventTypeLabel } from "@/lib/pricing";
 
 type Order = {
   id: string;
@@ -55,7 +55,7 @@ export default function OrdersTable({ initial }: { initial: Order[] }) {
             {orders.map((r) => (
               <tr key={r.id} className="border-t border-sand">
                 <td className="px-3 py-2 text-burgundy whitespace-nowrap">
-                  {new Date(r.eventDate).toLocaleDateString("en-IN", {
+                  {new Date(r.eventDate).toLocaleDateString("en-US", {
                     day: "numeric",
                     month: "short",
                     year: "numeric",
@@ -68,7 +68,7 @@ export default function OrdersTable({ initial }: { initial: Order[] }) {
                 <td className="px-3 py-2 text-burgundy">{eventTypeLabel(r.eventType)}</td>
                 <td className="px-3 py-2 text-stone text-[12px]">{r.venueAddress || "—"}</td>
                 <td className="px-3 py-2 text-burgundy">{r.guestCount}</td>
-                <td className="px-3 py-2 text-burgundy">{formatINR(r.totalAmount)}</td>
+                <td className="px-3 py-2 text-burgundy">{formatUSD(r.totalAmount)}</td>
                 <td className="px-3 py-2">
                   <input
                     type="number"

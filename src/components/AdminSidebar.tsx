@@ -29,7 +29,7 @@ export default function AdminSidebar({ userName }: { userName: string }) {
     <>
       {/* Mobile top bar */}
       <div className="md:hidden fixed top-0 inset-x-0 z-30 bg-burgundy text-cream p-3 flex items-center justify-between">
-        <span className="font-serif">Jesuraj · Admin</span>
+        <span className="font-serif">Adore Decors · Admin</span>
         <button onClick={() => setMobileOpen((v) => !v)} className="text-[12px]">
           {mobileOpen ? "Close" : "Menu"}
         </button>
@@ -41,7 +41,7 @@ export default function AdminSidebar({ userName }: { userName: string }) {
         } md:sticky md:top-0 md:block md:w-60 md:h-screen bg-burgundy text-cream flex-shrink-0`}
       >
         <div className="p-5 border-b border-burgundy-dark hidden md:block">
-          <div className="font-serif text-lg">Jesuraj</div>
+          <div className="font-serif text-lg">Adore Decors</div>
           <div className="text-[10px] text-blush tracking-[0.18em] uppercase">Admin Suite</div>
         </div>
         <nav className="p-3 space-y-1">

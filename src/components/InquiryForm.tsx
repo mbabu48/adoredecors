@@ -78,7 +78,7 @@ export default function InquiryForm() {
           value={form.phone}
           onChange={(e) => set("phone", e.target.value)}
           className="field"
-          placeholder="+91 98xxx xxxxx"
+          placeholder="+1 (555) xxx-xxxx"
         />
       </Field>
       <Field label="Email" required className="sm:col-span-2">

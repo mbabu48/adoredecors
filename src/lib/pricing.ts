@@ -1,5 +1,5 @@
-// Pricing engine. All values in Indian Rupees (₹).
-// These are starting rates — Jesuraj's team can tune them from a single file.
+// Pricing engine. All values in US Dollars ($).
+// These are starting rates — Adore Decors' team can tune them from a single file.
 
 export type EventType =
   | "wedding"
@@ -23,13 +23,13 @@ export type AddOnKey =
   | "entrance_arch";
 
 export const EVENT_TYPES: { key: EventType; label: string; base: number }[] = [
-  { key: "wedding", label: "Wedding", base: 80000 },
-  { key: "birthday", label: "Birthday", base: 30000 },
-  { key: "baby_shower", label: "Baby Shower", base: 30000 },
-  { key: "corporate", label: "Corporate", base: 60000 },
-  { key: "anniversary", label: "Anniversary", base: 35000 },
-  { key: "retirement", label: "Retirement", base: 30000 },
-  { key: "other", label: "Other", base: 25000 },
+  { key: "wedding", label: "Wedding", base: 2500 },
+  { key: "birthday", label: "Birthday", base: 800 },
+  { key: "baby_shower", label: "Baby Shower", base: 800 },
+  { key: "corporate", label: "Corporate", base: 2000 },
+  { key: "anniversary", label: "Anniversary", base: 1000 },
+  { key: "retirement", label: "Retirement", base: 800 },
+  { key: "other", label: "Other", base: 600 },
 ];
 
 export const VENUE_SIZES: { key: VenueSize; label: string; multiplier: number }[] = [
@@ -40,14 +40,14 @@ export const VENUE_SIZES: { key: VenueSize; label: string; multiplier: number }[
 ];
 
 export const ADD_ONS: { key: AddOnKey; label: string; price: number; hint?: string }[] = [
-  { key: "floral", label: "Floral arrangements", price: 15000, hint: "Roses, orchids, marigolds" },
-  { key: "balloon", label: "Balloon arches & columns", price: 8000 },
-  { key: "drapes", label: "Fabric drapes & ceiling swags", price: 12000 },
-  { key: "fairy_lights", label: "Fairy lights & fixtures", price: 10000 },
-  { key: "backdrop", label: "Custom backdrop (name / theme)", price: 18000 },
-  { key: "centerpieces", label: "Table centerpieces", price: 6000, hint: "Per set of 10 tables" },
-  { key: "stage", label: "Stage decor", price: 22000 },
-  { key: "entrance_arch", label: "Entrance arch", price: 9000 },
+  { key: "floral", label: "Floral arrangements", price: 400, hint: "Roses, orchids, peonies" },
+  { key: "balloon", label: "Balloon arches & columns", price: 200 },
+  { key: "drapes", label: "Fabric drapes & ceiling swags", price: 300 },
+  { key: "fairy_lights", label: "Fairy lights & fixtures", price: 250 },
+  { key: "backdrop", label: "Custom backdrop (name / theme)", price: 450 },
+  { key: "centerpieces", label: "Table centerpieces", price: 150, hint: "Per set of 10 tables" },
+  { key: "stage", label: "Stage decor", price: 600 },
+  { key: "entrance_arch", label: "Entrance arch", price: 250 },
 ];
 
 export type EstimateInput = {
@@ -68,7 +68,7 @@ export type EstimateBreakdown = {
 };
 
 const GUEST_THRESHOLD = 50;
-const PER_GUEST_OVER = 150; // ₹150 per guest beyond 50
+const PER_GUEST_OVER = 5; // $5 per guest beyond 50
 
 export function estimatePrice(input: EstimateInput): EstimateBreakdown {
   const event = EVENT_TYPES.find((e) => e.key === input.eventType) ?? EVENT_TYPES[0];
@@ -93,8 +93,8 @@ export function estimatePrice(input: EstimateInput): EstimateBreakdown {
   };
 }
 
-export function formatINR(n: number): string {
-  return "₹" + Math.round(n).toLocaleString("en-IN");
+export function formatUSD(n: number): string {
+  return "$" + Math.round(n).toLocaleString("en-US");
 }
 
 export function eventTypeLabel(key: string): string {

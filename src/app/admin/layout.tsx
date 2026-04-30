@@ -3,7 +3,7 @@ import { redirect } from "next/navigation";
 import { authOptions, isAdminEmail } from "@/lib/auth";
 import AdminSidebar from "@/components/AdminSidebar";
 
-export const metadata = { title: "Admin · Jesuraj" };
+export const metadata = { title: "Admin · Adore Decors" };
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
   const session = await getServerSession(authOptions);

@@ -26,7 +26,7 @@ function SignInInner() {
         <div className="text-center mb-6">
           <div className="text-[11px] text-rose tracking-[0.2em] uppercase">Admin access</div>
           <h1 className="font-serif text-2xl text-burgundy mt-1">Sign in to continue</h1>
-          <p className="text-stone text-[12px] mt-1">Restricted to authorized Jesuraj team.</p>
+          <p className="text-stone text-[12px] mt-1">Restricted to authorized Adore Decors team.</p>
         </div>
 
         {error && (

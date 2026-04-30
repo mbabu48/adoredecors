@@ -1,5 +1,5 @@
 import { prisma } from "@/lib/prisma";
-import { formatINR, eventTypeLabel } from "@/lib/pricing";
+import { formatUSD, eventTypeLabel } from "@/lib/pricing";
 import Link from "next/link";
 import { Inbox, Calendar, Star, Image as ImageIcon } from "lucide-react";
 
@@ -27,10 +27,10 @@ export default async function AdminDashboard() {
     { key: "booked", label: "Booked events", value: booked.toString(), icon: Calendar, href: "/admin/orders" },
     {
       key: "revenue",
-      label: "This month ₹",
+      label: "This month ($)",
       value: thisMonthRevenue._sum.totalAmount
-        ? formatINR(thisMonthRevenue._sum.totalAmount)
-        : "₹0",
+        ? formatUSD(thisMonthRevenue._sum.totalAmount)
+        : "$0",
       icon: Calendar,
       href: "/admin/orders",
     },
@@ -83,12 +83,12 @@ export default async function AdminDashboard() {
               {recent.map((r) => (
                 <tr key={r.id} className="border-t border-sand">
                   <td className="px-4 py-2 text-stone">
-                    {new Date(r.createdAt).toLocaleDateString("en-IN", { day: "numeric", month: "short" })}
+                    {new Date(r.createdAt).toLocaleDateString("en-US", { day: "numeric", month: "short" })}
                   </td>
                   <td className="px-4 py-2 text-burgundy">{r.name}</td>
                   <td className="px-4 py-2 text-burgundy">{eventTypeLabel(r.eventType)}</td>
                   <td className="px-4 py-2 text-burgundy hidden sm:table-cell">
-                    {r.estimatedCost ? formatINR(r.estimatedCost) : "—"}
+                    {r.estimatedCost ? formatUSD(r.estimatedCost) : "—"}
                   </td>
                   <td className="px-4 py-2">
                     <StatusPill status={r.status} />
